@@ -17,7 +17,7 @@ public class EmployeeDAOWrapper {
 	public EmployeeDAO dao;
 
 	public List<Employee> findAll() {
-		List<Employee> list = new ArrayList<Employee>();
+		List<Employee> list = new ArrayList<>();
 		
 		Iterable<EmployeeEntityBean> listEn = dao.findAll();
 		listEn.forEach(i -> {

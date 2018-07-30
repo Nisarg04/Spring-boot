@@ -22,7 +22,12 @@ public class EmployeeController {
 	
 	@RequestMapping(value="emp/controller/getDetails", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Employee>> getEmployeeDetails() {
-		List<Employee> empList = new ArrayList<>(employeeDao.findAll());
+		List<Employee> empList = new ArrayList<>();
+		try {
+			empList = new ArrayList<>(employeeDao.findAll());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return new ResponseEntity<List<Employee>>(empList, HttpStatus.OK);
 	}
 	
