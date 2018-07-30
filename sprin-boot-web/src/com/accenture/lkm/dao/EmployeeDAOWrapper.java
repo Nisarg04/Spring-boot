@@ -25,8 +25,18 @@ public class EmployeeDAOWrapper {
 			BeanUtils.copyProperties(i, e);
 			list.add(e);
 		});
-		
 		return list;
+	}
+
+	public Integer addEmployee(Employee emp) {
+		EmployeeEntityBean empEntity = new EmployeeEntityBean();
+		BeanUtils.copyProperties(emp, empEntity);
+		try {
+			dao.save(empEntity);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return empEntity.getId();
 	}
 	
 
